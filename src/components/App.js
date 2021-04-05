@@ -1,11 +1,24 @@
 import React, { useState } from "react"
 
 import Restaurant from "./Restaurant"
+import ReviewList from "./ReviewList"
+import ReviewForm from "./ReviewForm"
 
-import reviews from "../constants/reviews"
+import reviewsData from "../constants/reviews"
 
-const App = props => {
-  const [reviews, setReviews] = useState(reviews)
+const App = (props) => {
+  const [reviews, setReviews] = useState(reviewsData)
+
+  const addReview = (review) => {
+    const newReviewId = reviews[reviews.length - 1].id + 1
+    // debugger
+    const newReviewData = {
+      ...review,
+      id: newReviewId
+    }
+
+    setReviews([...reviews, newReviewData])
+  }
 
   return (
     <div className="grid-container">
@@ -18,15 +31,12 @@ const App = props => {
         <div className="reviews cell auto grid-x">
           <div className="cell">
             <h3>Review Form</h3>
-
-          // future review form component here
-
+            <ReviewForm addReview={addReview} />
           </div>
 
           <div className="cell">
             <h3>Reviews</h3>
-
-            // future review list component here
+            <ReviewList reviews={reviews} />
           </div>
         </div>
       </div>
