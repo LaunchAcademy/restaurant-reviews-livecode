@@ -1,14 +1,24 @@
-import React from 'react'
+import React from "react";
 
-import Review from "./Review"
+import Review from "./Review";
 
 const ReviewList = (props) => {
+  // debugger;
+  
+  const reviewComponents = props.reviews.map( (review) => {
+    return (
+      <Review 
+        key={review.id}
+        name={review.name}
+        rating={review.rating}
+        content={review.content}
+      />
+    )
+  })
 
-  return(
-    <div>
-      
-    </div>
+  return (
+    <div>{reviewComponents}</div>
   )
-}
+};
 
-export default ReviewList
+export default ReviewList;

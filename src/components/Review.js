@@ -1,6 +1,7 @@
 import React from 'react'
 
 const Review = (props) => {
+  // debugger
   return(
     <div className="mbl">
       <div className="grid-x">
